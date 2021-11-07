@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>Assign Product To a Category</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+   </head>
+   <body>
+   <form  th:object="${categoryForm}" th:action="@{/admin/saveProductCategory}"
+              method="POST" enctype="multipart/form-data">
+      <br/><br/>
+      <br/><br/>  
+ <div class="form-group col-md-8">
+<label  class="col-form-label">Category </label>
+<select  id="category" name="category" th:field="*{category}" >
+<option th:each="category : ${categories}" th:value="${category.id}" th:utext="${category.categoryname}"/>
+</select>
+</div>
+<br/><br/>
+<br/><br/>
+ <div class="form-group col-md-8">
+<label  class="col-form-label">Product </label>
+<select  id="product" name="product" th:field="*{product}" >
+<option th:each="product : ${products}" th:value="${product.code}" th:utext="${product.name}"/>
+</select>
+</div>
+
+<br/><br/>
+        <input type="submit" value="Submit" />
+
+      </form>
+      
+      <th:block th:include="/_footer"></th:block>
+      
+   </body>
+</html>
